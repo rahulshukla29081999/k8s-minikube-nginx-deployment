@@ -15,14 +15,18 @@ Basic PowerShell knowledge
 
 powershell
 
-choco install kubernetes-cli -y
-choco install minikube -y
+choco install kubernetes-cli -y 
+
 kubectl version --client
+
 minikube version
+
 🔹 Step 2: Start Minikube
 
 powershell
+
 minikube start
+
 First run downloads base images (~700 MB).
 
 Subsequent runs are faster.
@@ -32,6 +36,7 @@ Verify cluster:
 powershell
 
 kubectl get nodes
+
 kubectl cluster-info
 
 🔹 Step 3: Deploy Nginx
@@ -39,7 +44,9 @@ kubectl cluster-info
 powershell
 
 kubectl create deployment my-nginx --image=nginx:latest
+
 kubectl get deployments
+
 kubectl get pods
 
 🔹 Step 4: Expose Service
@@ -47,8 +54,11 @@ kubectl get pods
 powershell
 
 kubectl expose deployment my-nginx --port=80 --type=LoadBalancer
+
 kubectl get services
+
 minikube service my-nginx
+
 
 ⚠️ Note: With Docker driver on Windows, Minikube opens a tunnel in your terminal to simulate a LoadBalancer.
 
@@ -63,15 +73,20 @@ Closing the terminal stops the tunnel.
 powershell
 
 minikube dashboard
+
 minikube addons enable metrics-server
+
 kubectl get pods -n kube-system
+
 
 🔹 Step 6: Verify Pod
 
 powershell
 
 kubectl describe pod <pod-name>
+
 kubectl logs <pod-name>
+
 
 ✅ Summary
 
